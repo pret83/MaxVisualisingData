@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="MaxDataVisualisation.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaxDataVisualisation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Content="Load Data" Click="LoadDataClicked" HorizontalAlignment="Stretch" Grid.ColumnSpan="2"/>
+
+        <ListView x:Name="lapList" SelectionChanged="lapList_SelectionChanged" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Margin="6 0">
+                            <TextBlock Text="#" />
+                            <TextBlock Text="{Binding LapNumber}"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" Text="{Binding LaptimeString}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="6 2" />
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Slider x:Name="lapdistSlider" Header="Lap distance" StepFrequency="1" Grid.ColumnSpan="2" ValueChanged="lapdistSlider_ValueChanged"/>
+            <TextBlock Grid.Row="1" Text="Car speed"/>
+            <TextBlock Grid.Row="2" Text="Gear"/>
+            <TextBlock Grid.Row="3" Text="Engine RPM"/>
+            <TextBlock Grid.Row="4" Text="Lat. G-Force" />
+            <TextBlock Grid.Row="5" Text="Long. G-Force" />
+            <!--<TextBlock Grid.Row="4" Text="Car speed"/>
+            <TextBlock Grid.Row="5" Text="Car speed"/>
+            <TextBlock Grid.Row="6" Text="Car speed"/>-->
+            <TextBlock Grid.Row="6" Text="Throttle"/>
+            <TextBlock Grid.Row="7" Text="Brake"/>
+            <TextBlock Grid.Row="8" Text="Time in lap"/>
+
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="tblSpeed" />
+            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="tblGear"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="tbRpm"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="tblLatG"/>
+            <TextBlock Grid.Row="5" Grid.Column="1" x:Name="tblLongG"/>
+            <TextBlock Grid.Row="6" Grid.Column="1" x:Name="tbThrottle"/>
+            <TextBlock Grid.Row="7" Grid.Column="1" x:Name="tbBrake"/>
+            <TextBlock Grid.Row="8" Grid.Column="1" x:Name="tblTimeInLap"/>
+
+            <maps:MapControl x:Name="myMap"  Grid.Row="9" Grid.ColumnSpan="2"  
+                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </Grid>
+    </Grid>
+</Page>
