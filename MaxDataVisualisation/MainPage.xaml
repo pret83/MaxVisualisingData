@@ -25,9 +25,9 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Horizontal" Margin="6 0">
+                        <StackPanel Orientation="Horizontal" Margin="3 0">
                             <TextBlock Text="#" />
                             <TextBlock Text="{Binding LapNumber}"/>
                         </StackPanel>
